@@ -1,0 +1,57 @@
+services:
+  ui:
+    image: ghcr.io/open-webui/open-webui:main
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - ./open-webui:/app/backend/data
+    environment:
+      - "OLLAMA_BASE_URL=http://host.docker.internal:11434"
+      - "ENABLE_OLLAMA_API=true"
+
+  db:
+    image: postgres:15
+    restart: always
+    shm_size: 128mb
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: somesecretpw
+      POSTGRES_DB: litellm
+      PGDATA: /var/lib/postgresql/data/pgdata
+
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 4000:4000
+    volumes:
+      - ./litellm/config.yaml:/app/config.yaml
+    command: --port 4000 --config /app/config.yaml
+    env_file: .env.docker
+    environment:
+      - DATABASE_URL=postgresql://postgres:somesecretpw@db:5432/litellm
+
+  caddy:
+    image: caddy:2.7
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy/data:/data
+      - ./caddy/config:/config
+
+#  ollama:
+##    image: ollama/ollama
+#    image: ollama/ollama:rocm
+#    restart: always
+#    ports:
+#      - 11434:11434
+#    volumes:
+#      - ./ollama:/root/.ollama

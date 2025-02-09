@@ -1,0 +1,7 @@
+/caddy/data/*
+/caddy/config/*
+/data/*
+/litellm/*
+/ollama/*
+/open-webui/*
+/.env.docker
