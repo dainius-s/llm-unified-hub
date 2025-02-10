@@ -11,19 +11,24 @@ This setup provides a unified interface to call hundreds of remote and local AI 
 
 ## Configuration Steps
 
-### 1. AWS Bedrock Model Access
+### 1. Copy the Docker example environment file:
+   ```
+   cp .env.docker.example .env.docker
+   ```
+
+### 2. AWS Bedrock Model Access
 Enable individual models in AWS Bedrock:
 - Navigate to: [AWS Bedrock Model Access Console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess)
 - Follow AWS documentation to enable specific models
 
-### 2. Check Available Bedrock Models
+### 3. Check Available Bedrock Models
 List available models in your region using AWS CLI:
 ```
 # List Bedrock foundation models
 aws bedrock list-foundation-models --region us-east-1 > available_models.txt
 ```
 
-### 3. Configure AWS Credentials
+### 4. Configure AWS Credentials
 Create an `.env.docker` file with your AWS credentials:
 ```
 AWS_ACCESS_KEY_ID=your_access_key
@@ -31,7 +36,7 @@ AWS_SECRET_ACCESS_KEY=your_secret_key
 AWS_REGION=us-east-1
 ```
 
-### 4. LiteLLM Configuration
+### 5. LiteLLM Configuration
 Edit `litellm/config.yaml` to include Bedrock models:
 Please note that there is a `bedrock/` prefix before Bedrock models.
 ```
@@ -44,7 +49,7 @@ model_list:
   litellm_params:
   model: bedrock/anthropic.claude-3-haiku-v1:0
 ```
-### 5. Open Web UI Connections
+### 6. Open Web UI Connections
 
 When setting up Open Web UI, use these API endpoints:
 
