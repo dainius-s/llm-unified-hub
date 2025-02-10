@@ -16,9 +16,8 @@ services:
     shm_size: 128mb
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
+    env_file: .env.docker
     environment:
-      POSTGRES_PASSWORD: somesecretpw
-      POSTGRES_DB: litellm
       PGDATA: /var/lib/postgresql/data/pgdata
 
   litellm:
@@ -32,8 +31,6 @@ services:
       - ./litellm/config.yaml:/app/config.yaml
     command: --port 4000 --config /app/config.yaml
     env_file: .env.docker
-    environment:
-      - DATABASE_URL=postgresql://postgres:somesecretpw@db:5432/litellm
 
   caddy:
     image: caddy:2.7
