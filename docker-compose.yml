@@ -3,9 +3,10 @@ services:
     image: ghcr.io/open-webui/open-webui:main
     restart: always
     ports:
-      - 8080:8080
+      - 3000:8080
     volumes:
       - ./open-webui:/app/backend/data
+    env_file: .env.docker
     environment:
       - "OLLAMA_BASE_URL=http://host.docker.internal:11434"
       - "ENABLE_OLLAMA_API=true"
@@ -43,12 +44,3 @@ services:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile
       - ./caddy/data:/data
       - ./caddy/config:/config
-
-#  ollama:
-##    image: ollama/ollama
-#    image: ollama/ollama:rocm
-#    restart: always
-#    ports:
-#      - 11434:11434
-#    volumes:
-#      - ./ollama:/root/.ollama
