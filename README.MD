@@ -16,20 +16,43 @@ This setup provides a unified interface to call hundreds of remote and local AI 
    cp .env.docker.example .env.docker
    ```
 
-### 2. AWS Bedrock Model Access
-Enable individual models in AWS Bedrock:
-- Navigate to: [AWS Bedrock Model Access Console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess)
+### 2. Configure AWS Bedrock Model Access
+- Enable individual models in AWS Bedrock: [AWS Bedrock Model Access Console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess)
 - Follow AWS documentation to enable specific models
+- Create a IAM user on AWS with policy below and [AWS generate access credentials](https://www.youtube.com/watch?v=lntWTStctIE)
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream",
+        "bedrock:ListFoundationModels"
+      ],
+      "Resource": [
+        "arn:aws:bedrock:*::foundation-model/anthropic.claude-3-5-sonnet-20240620-v1:0",
+        "arn:aws:bedrock:*::foundation-model/anthropic.claude-3-sonnet-20240229-v1:0",
+        "arn:aws:bedrock:*::foundation-model/anthropic.claude-3-haiku-20240307-v1:0",
+        "arn:aws:bedrock:*::foundation-model/meta.llama3-8b-instruct-v1:0",
+        "arn:aws:bedrock:*::foundation-model/mistral.mixtral-8x7b-instruct-v0:1"
+      ]
+    }
+  ]
+}
+```
+
 
 ### 3. Check Available Bedrock Models
-List available models in your region using AWS CLI:
+List available models in your region using AWS CLI on your terminal (installed separately):
 ```
 # List Bedrock foundation models
 aws bedrock list-foundation-models --region us-east-1 > available_models.txt
 ```
 
 ### 4. Configure AWS Credentials
-Create an `.env.docker` file with your AWS credentials:
+Update `.env.docker` file with your AWS credentials:
 ```
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
@@ -51,10 +74,18 @@ model_list:
 ```
 ### 6. Open Web UI Connections
 
-When setting up Open Web UI, use these API endpoints:
+You can change the connection settings by navigate to: Profile > Settings > Admin Settings > Connections
 
-- OpenAI API (LiteLLM): http://host.docker.internal:4000/v1
-- Ollama API: http://host.docker.internal:11434
+You can also update `.env.docker` file with your credentials:
+```
+# Open Web UI - Overriden to connect to LiteLLM instead
+OPENAI_API_BASE_URL=http://host.docker.internal:4000/v1 # default url to LiteLLM container
+OPENAI_API_KEY=sk-litellm-password                      # change this to LITELLM_MASTER_KEY value
+
+# Open Web UI - OLLama
+OLLAMA_BASE_URL=http://host.docker.internal:11434
+ENABLE_OLLAMA_API=true # disable if not using
+```
 
 ## Docker Compose Commands
 ```
