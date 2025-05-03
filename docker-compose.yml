@@ -1,17 +1,4 @@
 services:
-  ui:
-    image: ghcr.io/open-webui/open-webui:main
-    restart: always
-    ports:
-      - 3000:8080
-    volumes:
-      - ./open-webui:/app/backend/data
-    env_file: .env.docker
-    environment:
-      - "OLLAMA_BASE_URL=http://host.docker.internal:11434"
-      - "ENABLE_OLLAMA_API=true"
-      - "WEBUI_AUTH=false"
-
   db:
     image: postgres:15
     restart: always
@@ -21,6 +8,23 @@ services:
     env_file: .env.docker
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
+
+  ui:
+    build:
+      context: .
+      dockerfile: dockerfile.ui
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 3000:8080
+    volumes:
+      - ./open-webui:/data
+    env_file: .env.docker
+    environment:
+      - "OLLAMA_BASE_URL=http://host.docker.internal:11434"
+      - "ENABLE_OLLAMA_API=true"
+      - "WEBUI_AUTH=false"
 
   litellm:
     image: ghcr.io/berriai/litellm:main-latest
