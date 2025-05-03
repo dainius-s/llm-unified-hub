@@ -2,13 +2,10 @@ FROM ghcr.io/open-webui/open-webui:main
 
 # Add wait-for-it
 ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
 
-# Add launch script
-COPY launch.sh /launch.sh
+# Add entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# Ensure both are executable and clean line endings (LF)
-RUN chmod +x /wait-for-it.sh /launch.sh && \
-    dos2unix /wait-for-it.sh /launch.sh || true
-
-# Default command: our launch script
-CMD ["/launch.sh"]
+ENTRYPOINT ["/entrypoint.sh"]

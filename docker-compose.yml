@@ -5,11 +5,6 @@ services:
     shm_size: 128mb
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
     env_file: .env.docker
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
@@ -19,8 +14,6 @@ services:
       context: .
       dockerfile: dockerfile.ui
     restart: always
-    depends_on:
-      - db
     ports:
       - 3000:8080
     volumes:
