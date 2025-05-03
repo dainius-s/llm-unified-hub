@@ -5,6 +5,11 @@ services:
     shm_size: 128mb
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     env_file: .env.docker
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
@@ -19,7 +24,7 @@ services:
     ports:
       - 3000:8080
     volumes:
-      - ./open-webui:/data
+      - ./open-webui:/app/backend/data
     env_file: .env.docker
     environment:
       - "OLLAMA_BASE_URL=http://host.docker.internal:11434"
