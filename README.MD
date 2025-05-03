@@ -2,6 +2,14 @@
 
 This setup provides a unified interface to call hundreds of remote and local AI models while tracking billing and usage across platforms.
 
+## Access Links After Configuration
+
+- **Open Web UI (Main Chatbot Interface)**: [http://localhost:3000](http://localhost:3000)
+- **LiteLLM Dashboard** (Cost & Model Management): [http://localhost:4000/ui](http://localhost:4000/ui)
+    - *Credentials are defined in the .env.docker file*
+
+> **Note:** You must complete the configuration steps below before attempting to access these links!
+
 ## Prerequisites
 
 - Docker and Docker Compose
@@ -12,15 +20,16 @@ This setup provides a unified interface to call hundreds of remote and local AI 
 ## Configuration Steps
 
 ### 1. Copy the Docker example environment file:
-   ```
-   cp .env.docker.example .env.docker
-   ```
+```bash
+cp .env.docker.example .env.docker
+```
 
 ### 2. Configure AWS Bedrock Model Access
 - Enable individual models in AWS Bedrock: [AWS Bedrock Model Access Console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess)
 - Follow AWS documentation to enable specific models
-- Create a IAM user on AWS with policy below and [AWS generate access credentials](https://www.youtube.com/watch?v=lntWTStctIE)
-```
+- Create an IAM user on AWS with policy below and [AWS generate access credentials](https://www.youtube.com/watch?v=lntWTStctIE)
+
+```json
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -43,10 +52,9 @@ This setup provides a unified interface to call hundreds of remote and local AI 
 }
 ```
 
-
 ### 3. Check Available Bedrock Models
 List available models in your region using AWS CLI on your terminal (installed separately):
-```
+```bash
 # List Bedrock foundation models
 aws bedrock list-foundation-models --region us-east-1 > available_models.txt
 ```
@@ -62,19 +70,20 @@ AWS_REGION=us-east-1
 ### 5. LiteLLM Configuration
 Edit `litellm/config.yaml` to include Bedrock models:
 Please note that there is a `bedrock/` prefix before Bedrock models.
-```
+```yaml
 model_list:
 - model_name: bedrock-claude-3-sonnet
   litellm_params:
-  model: bedrock/anthropic.claude-3-sonnet-v1:0
+    model: bedrock/anthropic.claude-3-sonnet-v1:0
 
 - model_name: bedrock-claude-3-haiku
   litellm_params:
-  model: bedrock/anthropic.claude-3-haiku-v1:0
+    model: bedrock/anthropic.claude-3-haiku-v1:0
 ```
+
 ### 6. Open Web UI Connections
 
-You can change the connection settings by navigate to: Profile > Settings > Admin Settings > Connections
+You can change the connection settings by navigating to: Profile > Settings > Admin Settings > Connections
 
 You can also update `.env.docker` file with your credentials:
 ```
@@ -88,7 +97,7 @@ ENABLE_OLLAMA_API=true # disable if not using
 ```
 
 ## Docker Compose Commands
-```
+```bash
 # Start all services
 docker-compose up -d
 
@@ -107,8 +116,7 @@ docker-compose down
 - [AWS Bedrock Model Access](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access-modify.html)
 - [LiteLLM Configuration](https://github.com/aws-samples/bedrock-litellm)
 
-### Performance and Cost Optimization
+## Performance and Cost Optimization
 
 - Monitor model usage and costs through LiteLLM dashboard
 - Experiment with different models to find the right balance of performance and cost
-

@@ -10,6 +10,7 @@ services:
     environment:
       - "OLLAMA_BASE_URL=http://host.docker.internal:11434"
       - "ENABLE_OLLAMA_API=true"
+      - "WEBUI_AUTH=false"
 
   db:
     image: postgres:15

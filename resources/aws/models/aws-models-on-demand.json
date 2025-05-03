@@ -1,0 +1,313 @@
+{
+    "modelSummaries": [
+        {
+            "modelId": "amazon.titan-tg1-large",
+            "modelName": "Titan Text Large",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.titan-image-generator-v1",
+            "modelName": "Titan Image Generator G1",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT", "IMAGE"],
+            "outputModalities": ["IMAGE"],
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.titan-text-premier-v1:0",
+            "modelName": "Titan Text G1 - Premier",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.nova-canvas-v1:0",
+            "modelName": "Nova Canvas",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT", "IMAGE"],
+            "outputModalities": ["IMAGE"],
+            "responseStreamingSupported": false,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.nova-reel-v1:0",
+            "modelName": "Nova Reel",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT", "IMAGE"],
+            "outputModalities": ["VIDEO"],
+            "responseStreamingSupported": false,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.titan-embed-g1-text-02",
+            "modelName": "Titan Text Embeddings v2",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["EMBEDDING"],
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.titan-text-lite-v1",
+            "modelName": "Titan Text G1 - Lite",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.titan-text-express-v1",
+            "modelName": "Titan Text G1 - Express",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.titan-embed-text-v1",
+            "modelName": "Titan Embeddings G1 - Text",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["EMBEDDING"],
+            "responseStreamingSupported": false,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.titan-embed-text-v2:0",
+            "modelName": "Titan Text Embeddings V2",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["EMBEDDING"],
+            "responseStreamingSupported": false,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "amazon.titan-embed-image-v1",
+            "modelName": "Titan Multimodal Embeddings G1",
+            "providerName": "Amazon",
+            "inputModalities": ["TEXT", "IMAGE"],
+            "outputModalities": ["EMBEDDING"],
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "ai21.jamba-instruct-v1:0",
+            "modelName": "Jamba-Instruct",
+            "providerName": "AI21 Labs",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "ai21.jamba-1-5-large-v1:0",
+            "modelName": "Jamba 1.5 Large",
+            "providerName": "AI21 Labs",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "ai21.jamba-1-5-mini-v1:0",
+            "modelName": "Jamba 1.5 Mini",
+            "providerName": "AI21 Labs",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "cohere.command-text-v14",
+            "modelName": "Command",
+            "providerName": "Cohere",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "cohere.command-r-v1:0",
+            "modelName": "Command R",
+            "providerName": "Cohere",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "cohere.command-r-plus-v1:0",
+            "modelName": "Command R+",
+            "providerName": "Cohere",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "cohere.command-light-text-v14",
+            "modelName": "Command Light",
+            "providerName": "Cohere",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "cohere.embed-english-v3",
+            "modelName": "Embed English",
+            "providerName": "Cohere",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["EMBEDDING"],
+            "responseStreamingSupported": false,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "cohere.embed-multilingual-v3",
+            "modelName": "Embed Multilingual",
+            "providerName": "Cohere",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["EMBEDDING"],
+            "responseStreamingSupported": false,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "meta.llama3-8b-instruct-v1:0",
+            "modelName": "Llama 3 8B Instruct",
+            "providerName": "Meta",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "meta.llama3-70b-instruct-v1:0",
+            "modelName": "Llama 3 70B Instruct",
+            "providerName": "Meta",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "mistral.mistral-7b-instruct-v0:2",
+            "modelName": "Mistral 7B Instruct",
+            "providerName": "Mistral AI",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "mistral.mixtral-8x7b-instruct-v0:1",
+            "modelName": "Mixtral 8x7B Instruct",
+            "providerName": "Mistral AI",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "mistral.mistral-large-2402-v1:0",
+            "modelName": "Mistral Large (24.02)",
+            "providerName": "Mistral AI",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        },
+        {
+            "modelId": "mistral.mistral-small-2402-v1:0",
+            "modelName": "Mistral Small (24.02)",
+            "providerName": "Mistral AI",
+            "inputModalities": ["TEXT"],
+            "outputModalities": ["TEXT"],
+            "responseStreamingSupported": true,
+            "inferenceTypesSupported": ["ON_DEMAND"],
+            "modelLifecycle": {
+                "status": "ACTIVE"
+            }
+        }
+    ]
+}
