@@ -4,4 +4,4 @@
 /litellm/*
 /ollama/*
 /open-webui/*
-/.env.docker
+/.*.example

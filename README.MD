@@ -19,9 +19,10 @@ This setup provides a unified interface to call hundreds of remote and local AI 
 
 ## Configuration Steps
 
-### 1. Copy the Docker example environment file:
+### 1. Copy the Docker example environment files:
 ```bash
-cp .env.docker.example .env.docker
+cp .env.litellm.example .env.litellm
+cp .env.openui.example .env.openui
 ```
 
 ### 2. Configure AWS Bedrock Model Access
@@ -60,7 +61,7 @@ aws bedrock list-foundation-models --region us-east-1 > available_models.txt
 ```
 
 ### 4. Configure AWS Credentials
-Update `.env.docker` file with your AWS credentials:
+Update `.env.litellm` file with your AWS credentials:
 ```
 AWS_ACCESS_KEY_ID=your_access_key
 AWS_SECRET_ACCESS_KEY=your_secret_key
@@ -85,11 +86,11 @@ model_list:
 
 You can change the connection settings by navigating to: Profile > Settings > Admin Settings > Connections
 
-You can also update `.env.docker` file with your credentials:
+You can also update `.env.openui` file with your credentials:
 ```
 # Open Web UI - Overriden to connect to LiteLLM instead
 OPENAI_API_BASE_URL=http://host.docker.internal:4000/v1 # default url to LiteLLM container
-OPENAI_API_KEY=sk-litellm-password                      # change this to LITELLM_MASTER_KEY value
+OPENAI_API_KEY=litellm-password                      # change this to LITELLM_MASTER_KEY value
 
 # Open Web UI - OLLama
 OLLAMA_BASE_URL=http://host.docker.internal:11434

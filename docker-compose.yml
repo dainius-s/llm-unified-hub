@@ -5,24 +5,23 @@ services:
     shm_size: 128mb
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
-    env_file: .env.docker
+    env_file: .env.litellm
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
 
   ui:
-    build:
-      context: .
-      dockerfile: dockerfile.ui
+    image: ghcr.io/open-webui/open-webui:main
     restart: always
     ports:
       - 3000:8080
     volumes:
       - ./open-webui:/app/backend/data
-    env_file: .env.docker
-    environment:
-      - "OLLAMA_BASE_URL=http://host.docker.internal:11434"
-      - "ENABLE_OLLAMA_API=true"
-      - "WEBUI_AUTH=false"
+    env_file: .env.openui
+#    environment:
+#      - "OLLAMA_BASE_URL=http://host.docker.internal:11434"
+#      - "ENABLE_OLLAMA_API=true"
+#      - "WEBUI_AUTH=false"
+#      - "OPENAI_API_BASE_URL=http://host.docker.internal:4000/v1"
 
   litellm:
     image: ghcr.io/berriai/litellm:main-latest
@@ -34,7 +33,7 @@ services:
     volumes:
       - ./litellm/config.yaml:/app/config.yaml
     command: --port 4000 --config /app/config.yaml
-    env_file: .env.docker
+    env_file: .env.litellm
 
   caddy:
     image: caddy:2.7
